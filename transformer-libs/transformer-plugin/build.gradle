@@ -9,15 +9,12 @@ repositories {
 
 dependencies {
     compileOnly gradleApi()
-//    compileOnly "com.android.tools.build:gradle:$android_plugin_version"
-    compileOnly("com.android.tools.build:gradle:$android_plugin_version") {
-        exclude group: 'org.jetbrains.kotlin'
-    }
+    compileOnly "com.android.tools.build:gradle:$android_plugin_version"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation 'commons-io:commons-io:2.6'
-    implementation 'org.ow2.asm:asm:7.0'
+    implementation 'org.ow2.asm:asm:7.1'
 }
 
 compileKotlin {

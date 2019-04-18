@@ -32,6 +32,7 @@ import javax.net.ssl.HostnameVerifier
 import javax.net.ssl.HttpsURLConnection
 import javax.net.ssl.SSLSocketFactory
 
+@Suppress("unused")
 class UrlConnectionInstrumentation {
 
     companion object {
@@ -39,8 +40,7 @@ class UrlConnectionInstrumentation {
         @JvmStatic
         fun openConnection(url: URL): URLConnection {
             Log.d("@@@@@", "Fetching $url via openConnection")
-            val conn = url.openConnection()
-            return when (conn) {
+            return when (val conn = url.openConnection()) {
                 is HttpsURLConnection ->
                     InstrumentedHttpsURLConnection(url, conn)
                 is HttpURLConnection ->
