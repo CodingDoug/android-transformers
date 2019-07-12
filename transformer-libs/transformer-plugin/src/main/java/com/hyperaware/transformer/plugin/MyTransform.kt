@@ -19,6 +19,7 @@ package com.hyperaware.transformer.plugin
 import com.android.build.api.transform.QualifiedContent
 import com.android.build.api.transform.Transform
 import com.android.build.api.transform.TransformInvocation
+import com.android.build.api.variant.VariantInfo
 import com.android.build.gradle.AppExtension
 import org.gradle.api.Project
 import org.gradle.api.logging.Logging
