@@ -1,5 +1,6 @@
 buildscript {
-    ext.kotlin_version = '1.4.0'
+    ext.kotlin_version = '1.4.10'
+    // 4.1.0 currently won't work in IntellJ 2020.2.3
     ext.android_plugin_version = '4.0.1'
 
     repositories {
