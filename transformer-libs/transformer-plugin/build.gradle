@@ -13,8 +13,8 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    implementation 'commons-io:commons-io:2.6'
-    implementation 'org.ow2.asm:asm:7.1'
+    implementation 'commons-io:commons-io:2.8.0'
+    implementation 'org.ow2.asm:asm:9.0'
 }
 
 compileKotlin {
