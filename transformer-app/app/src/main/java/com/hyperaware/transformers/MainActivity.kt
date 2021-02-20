@@ -17,11 +17,9 @@
 package com.hyperaware.transformers
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
-import java.io.InputStream
+import androidx.appcompat.app.AppCompatActivity
 import java.net.URL
-import java.net.URLConnection
 import java.nio.charset.Charset
 import javax.net.ssl.HttpsURLConnection
 
@@ -50,17 +48,18 @@ class MyRunnable : Runnable {
         // The decorated class also returns a decorated InputStream, which logs
         // a message to make itself known here.
         //
-        conn.getInputStream().read(array)
+        conn.getInputStream().use {
+            // Since the decorator subclasses the appropriate expected type, it
+            // can still be cast as expected in order to call special methods
+            // for HTTPS connections.
+            //
+            if (conn is HttpsURLConnection) {
+                Log.d("@@@@@", conn.cipherSuite.toString())
+            }
 
-        // Since the decorator subclasses the appropriate expected type, it
-        // can still be cast as expected in order to call special methods
-        // for HTTPS connections.
-        //
-        if (conn is HttpsURLConnection) {
-            Log.d("@@@@@", conn.cipherSuite.toString())
+            it.read(array)
+            Log.d("@@@@@", array.toString(Charset.defaultCharset()))
         }
-
-        Log.d("@@@@@", array.toString(Charset.defaultCharset()))
     }
 
 }
